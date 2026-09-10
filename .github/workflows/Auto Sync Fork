@@ -1,0 +1,22 @@
+name: Auto Sync Fork
+
+on:
+  schedule:
+    # 每 6 小时自动运行一次（可根据 Cron 表达式自行调整）
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # 支持在 GitHub 页面手动触发运行
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+
+      - name: Sync upstream changes
+        uses: a270014/sync-upstream-repo@v1.3.0
+        with:
+          upstream_repo: "原作者GitHub用户名/原仓库名"
+          upstream_branch: "main" # 原仓库的主分支名称（通常为 main 或 master）
+          target_branch: "main"   # 你 Fork 仓库的目标分支
+          github_token: ${{ secrets.GITHUB_TOKEN }}
