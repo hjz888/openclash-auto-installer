@@ -3,7 +3,7 @@ name: Auto Sync Fork
 on:
   schedule:
     # 每 6 小时自动运行一次（可根据 Cron 表达式自行调整）
-    - cron: '0 */6 * * *'
+    - cron: '0 0 */10 * *'
   workflow_dispatch: # 支持在 GitHub 页面手动触发运行
 
 jobs:
