@@ -14,9 +14,8 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Sync upstream changes
-        uses: a270014/sync-upstream-repo@v1.3.0
-        with:
-          upstream_repo: "dabreadman/sync-upstream-repo@v1.3.0"
-          upstream_branch: "main" # 原仓库的主分支名称（通常为 main 或 master）
-          target_branch: "main"   # 你 Fork 仓库的目标分支
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 自动将上游仓库的 main 分支同步到当前仓库
+          gh repo sync ${{ github.repository }} -b main
