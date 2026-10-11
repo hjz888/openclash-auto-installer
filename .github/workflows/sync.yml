@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      workflows: write
       
     steps:
       - name: Checkout target repo
@@ -27,9 +28,13 @@ jobs:
           git remote add upstream https://github.com/slobys/openclash-auto-installer.git
           git fetch upstream
 
-          # 3. 切换到 main 分支并重置为上游的最新状态
+          # 3. 切换到 main 分支并重置为上游最新状态
           git checkout main
           git reset --hard upstream/main
 
-          # 4. 强制推送到你的 GitHub 仓库
+          # 4. 关键：还原本地的 .github/workflows 目录，避免触发 GitHub 的工作流修改拦截
+          git checkout origin/main -- .github/workflows/ || true
+          git commit -m "Preserve local workflow" || { echo "No changes to commit"; }
+
+          # 5. 强制推送到你的 GitHub 仓库
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/hjz888/openclash-auto-installer.git main --force
