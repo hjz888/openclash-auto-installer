@@ -2,9 +2,8 @@ name: Auto Sync Fork
 
 on:
   schedule:
-    # 每 10 天自动运行一次
     - cron: '0 0 */10 * *'
-  workflow_dispatch: # 支持在 GitHub 页面手动触发运行
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -13,6 +12,9 @@ jobs:
       contents: write
       
     steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v5
+
       - name: Sync upstream changes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -25,9 +27,9 @@ jobs:
           git remote add upstream https://github.com/slobys/openclash-auto-installer.git
           git fetch upstream
 
-          # 3. 切换到 main 分支并重置为上游的最新状态（强制覆盖本地冲突）
+          # 3. 切换到 main 分支并重置为上游的最新状态
           git checkout main
           git reset --hard upstream/main
 
           # 4. 强制推送到你的 GitHub 仓库
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main --force
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/hjz888/openclash-auto-installer.git main --force
