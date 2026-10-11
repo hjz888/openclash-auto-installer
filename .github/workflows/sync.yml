@@ -2,16 +2,16 @@ name: Auto Sync Fork
 
 on:
   schedule:
-    # 每 6 小时自动运行一次（可根据 Cron 表达式自行调整）
+    # 每 10 天自动运行一次
     - cron: '0 0 */10 * *'
   workflow_dispatch: # 支持在 GitHub 页面手动触发运行
 
 jobs:
   sync:
     runs-on: ubuntu-latest
-# 显式声明写入权限
     permissions:
-      contents: write    
+      contents: write
+      
     steps:
       - name: Checkout target repo
         uses: actions/checkout@v5
@@ -20,5 +20,17 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 自动将上游仓库的 main 分支同步到当前仓库
-          gh repo sync ${{ github.repository }} -b main
+          # 1. 配置 Git 用户信息（用于提交记录）
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 2. 添加上游仓库地址（请将下面的 URL 换成你的上游原仓库地址）
+          git remote add upstream https://github.com/slobys/openclash-auto-installer.git
+          git fetch upstream
+
+          # 3. 切换并合并上游的 main 分支到当前仓库
+          git checkout main
+          git merge upstream/main --allow-unrelated-histories
+
+          # 4. 推送到你的 GitHub 仓库
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main
