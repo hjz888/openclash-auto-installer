@@ -230,8 +230,19 @@ download_and_run() {
 
     log "下载脚本: $URL"
     download_file "$URL" "$TMP_SCRIPT" || die "下载脚本失败: $SCRIPT_NAME"
+    [ -s "$TMP_SCRIPT" ] || die "下载的脚本为空: $SCRIPT_NAME"
     chmod +x "$TMP_SCRIPT"
     sh "$TMP_SCRIPT" "$@"
+}
+
+run_interactive_script() {
+    # Keep a failed child action (including download errors) inside the menu.
+    if (download_and_run "$@"); then
+        return 0
+    else
+        ACTION_STATUS="$?"
+        printf '%s\n' "[ERROR] 操作失败（退出码 $ACTION_STATUS），请保留上方日志；本次未确认完成，可返回菜单重试" >&2
+    fi
 }
 
 show_menu() {
@@ -417,28 +428,28 @@ run_check_update_menu() {
         read_from_tty subchoice
         case "$subchoice" in
             1)
-                download_and_run check-updates.sh
+                run_interactive_script check-updates.sh
                 ;;
             2)
-                download_and_run check-updates.sh --openclash
+                run_interactive_script check-updates.sh --openclash
                 ;;
             3)
-                download_and_run check-updates.sh --passwall
+                run_interactive_script check-updates.sh --passwall
                 ;;
             4)
-                download_and_run check-updates.sh --passwall2
+                run_interactive_script check-updates.sh --passwall2
                 ;;
             5)
-                download_and_run check-updates.sh --nikki
+                run_interactive_script check-updates.sh --nikki
                 ;;
             6)
-                download_and_run check-updates.sh --smartdns
+                run_interactive_script check-updates.sh --smartdns
                 ;;
             7)
-                download_and_run check-updates.sh --mosdns
+                run_interactive_script check-updates.sh --mosdns
                 ;;
             8)
-                download_and_run check-updates.sh --daed
+                run_interactive_script check-updates.sh --daed
                 ;;
             0)
                 return 0
@@ -460,37 +471,37 @@ run_install_menu() {
         read_from_tty subchoice
         case "$subchoice" in
             1)
-                download_and_run install.sh
+                run_interactive_script install.sh
                 ;;
             2)
-                download_and_run install.sh --plugin-only
+                run_interactive_script install.sh --plugin-only
                 ;;
             3)
-                download_and_run install.sh --core-only
+                run_interactive_script install.sh --core-only
                 ;;
             4)
-                download_and_run install.sh --core-only --meta-core --skip-pkg-update
+                run_interactive_script install.sh --core-only --meta-core --skip-pkg-update
                 ;;
             5)
-                download_and_run install.sh --core-only --smart-core --skip-pkg-update
+                run_interactive_script install.sh --core-only --smart-core --skip-pkg-update
                 ;;
             6)
-                download_and_run passwall.sh
+                run_interactive_script passwall.sh
                 ;;
             7)
-                download_and_run passwall2.sh
+                run_interactive_script passwall2.sh
                 ;;
             8)
-                download_and_run nikki.sh
+                run_interactive_script nikki.sh
                 ;;
             9)
-                download_and_run smartdns.sh
+                run_interactive_script smartdns.sh
                 ;;
             10)
-                download_and_run mosdns.sh
+                run_interactive_script mosdns.sh
                 ;;
             11)
-                download_and_run daed.sh
+                run_interactive_script daed.sh
                 ;;
             0)
                 return 0
@@ -512,25 +523,25 @@ run_uninstall_menu() {
         read_from_tty subchoice
         case "$subchoice" in
             1)
-                download_and_run uninstall.sh passwall --delete-config
+                run_interactive_script uninstall.sh passwall --delete-config
                 ;;
             2)
-                download_and_run uninstall.sh passwall2 --delete-config
+                run_interactive_script uninstall.sh passwall2 --delete-config
                 ;;
             3)
-                download_and_run uninstall.sh nikki --delete-config
+                run_interactive_script uninstall.sh nikki --delete-config
                 ;;
             4)
-                download_and_run uninstall.sh smartdns --delete-config
+                run_interactive_script uninstall.sh smartdns --delete-config
                 ;;
             5)
-                download_and_run uninstall.sh mosdns --delete-config
+                run_interactive_script uninstall.sh mosdns --delete-config
                 ;;
             6)
-                download_and_run uninstall.sh openclash --delete-config
+                run_interactive_script uninstall.sh openclash --delete-config
                 ;;
             7)
-                download_and_run uninstall.sh daed --delete-config
+                run_interactive_script uninstall.sh daed --delete-config
                 ;;
             0)
                 return 0

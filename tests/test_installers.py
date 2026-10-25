@@ -25,6 +25,137 @@ def shell(code, **env):
 
 
 class InstallerTests(unittest.TestCase):
+    def test_openclash_partial_apk_index_failure_reaches_dependency_check(self):
+        code = '''
+log() { echo "$*"; }
+warn() { echo "$*" >&2; }
+die() { echo "$*" >&2; exit 1; }
+apk() {
+    case "$1" in
+        update)
+            echo 'wgetFailed to send request: Operation not permitted' >&2
+            echo '0 unavailable, 2 stale; 11272 distinct packages available' >&2
+            return 2 ;;
+        info) return 0 ;;
+        add) echo UNNECESSARY_DEPENDENCY_TRANSACTION ;;
+    esac
+}
+'''
+        code += (function('install.sh', 'maybe_update_index_apk') + '\n' +
+                 function('install.sh', 'install_dependencies_apk') +
+                 '\ninstall_dependencies_apk nft\necho DEPENDENCIES_READY')
+        result = shell(code, FORCE_OPKG_UPDATE='1')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('DEPENDENCIES_READY', result.stdout)
+        self.assertNotIn('UNNECESSARY_DEPENDENCY_TRANSACTION', result.stdout)
+        self.assertIn('apk update 未完全成功', result.stderr)
+
+    def test_openclash_apk_installs_only_missing_dependencies_and_stops_on_failure(self):
+        code = '''
+log() { :; }
+warn() { :; }
+die() { echo "$*" >&2; exit 1; }
+apk() {
+    case "$1" in
+        info) [ "$3" != curl ] ;;
+        add) echo "$*"; return "$ADD_STATUS" ;;
+        *) return 99 ;;
+    esac
+}
+'''
+        code += (function('install.sh', 'maybe_update_index_apk') + '\n' +
+                 function('install.sh', 'install_dependencies_apk') +
+                 '\ninstall_dependencies_apk nft\necho DEPENDENCIES_READY')
+        for status in (0, 4):
+            with self.subTest(add_status=status):
+                result = shell(code, FORCE_OPKG_UPDATE='0', ADD_STATUS=str(status))
+                self.assertIn('add curl\n', result.stdout)
+                self.assertEqual('DEPENDENCIES_READY' in result.stdout, status == 0)
+                self.assertEqual(result.returncode, 0 if status == 0 else 1)
+                if status:
+                    self.assertIn('未执行插件更新', result.stderr)
+
+    def test_openclash_main_partial_index_and_post_install_version(self):
+        for behavior in ('upgrade', 'noop', 'missing', 'install-error', 'no-core', 'core-download-error'):
+            with self.subTest(behavior=behavior), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                version = root / 'version'
+                version.write_text('0.47.156')
+                source = (ROOT / 'install.sh').read_text()
+                source = source.replace('/tmp/openclash-auto-install', str(root / 'task'))
+                overrides = '''
+detect_pkg_mgr() { echo apk; }
+detect_firewall_stack() { echo nft; }
+get_distr_arch() { echo aarch64_generic; }
+get_distr_release() { echo 25.12.5; }
+jsonfilter() { :; }
+detect_core_candidates() { [ "$BEHAVIOR" = no-core ] || echo clash-linux-arm64.tar.gz; }
+download_core() { return 1; }
+fetch_openclash_release_meta() { :; }
+get_latest_tag() { echo v0.48.002; }
+fetch_openclash_package_url() { echo https://example.invalid/openclash.apk; }
+download_file() { echo fixture > "$2"; }
+apk() {
+    case "$1" in
+        update)
+            echo '0 unavailable, 2 stale; 11272 distinct packages available' >&2
+            return 2 ;;
+        info) return 0 ;;
+        list) printf 'luci-app-openclash %s\\n' "$(cat "$VERSION_FILE")" ;;
+        add)
+            case "$BEHAVIOR" in
+                upgrade|no-core|core-download-error) echo 0.48.002 > "$VERSION_FILE" ;;
+                missing) : > "$VERSION_FILE" ;;
+                install-error) return 4 ;;
+                noop) : ;;
+            esac ;;
+        *) return 99 ;;
+    esac
+}
+'''
+                source = source.removesuffix('main "$@"\n') + overrides + '\nmain "$@"\n'
+                script = root / 'installer.sh'
+                script.write_text(source)
+                args = ['sh', str(script), '--skip-restart']
+                if behavior not in ('no-core', 'core-download-error'):
+                    args.append('--plugin-only')
+                result = subprocess.run(args,
+                                        text=True, capture_output=True, env={**os.environ,
+                                        'VERSION_FILE': str(version), 'BEHAVIOR': behavior})
+                self.assertEqual(result.returncode == 0, behavior == 'upgrade', result.stderr)
+                self.assertEqual('==> 完成' in result.stdout, behavior == 'upgrade')
+                if behavior == 'upgrade':
+                    self.assertIn('0.48.002（已核验目标 v0.48.002）', result.stdout)
+                elif behavior == 'noop':
+                    self.assertIn('更新未生效', result.stderr)
+
+    def test_interactive_menu_retains_failures_but_cli_propagates_them(self):
+        code = ('download_and_run() { echo child-failed >&2; exit 23; }\n' +
+                function('menu.sh', 'run_interactive_script') +
+                '\nrun_interactive_script install.sh\necho MENU_ALIVE')
+        result = shell(code)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('MENU_ALIVE', result.stdout)
+        self.assertIn('退出码 23', result.stderr)
+        self.assertIn('本次未确认完成', result.stderr)
+        code = ('download_and_run() { return 23; }\n' +
+                function('menu.sh', 'run_action') + '\nrun_action openclash\necho FALSE_SUCCESS')
+        result = shell(code)
+        self.assertEqual(result.returncode, 23)
+        self.assertNotIn('FALSE_SUCCESS', result.stdout)
+
+    def test_menu_rejects_empty_download_instead_of_executing_it(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            code = ('log() { :; }\ndie() { echo "$*" >&2; exit 1; }\n'
+                    'resolve_base_url() { echo https://example.invalid; }\n'
+                    'download_file() { : > "$2"; }\n' +
+                    function('menu.sh', 'download_and_run') +
+                    '\ndownload_and_run fixture.sh\necho FALSE_SUCCESS')
+            result = shell(code, TMP_SCRIPT=str(Path(tmp) / 'action.sh'))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('下载的脚本为空', result.stderr)
+            self.assertNotIn('FALSE_SUCCESS', result.stdout)
+
     def test_core_cpu_and_userspace_architecture(self):
         cases = {
             'aarch64_cortex-a53': 'arm64', 'aarch64_cortex-a72': 'arm64',

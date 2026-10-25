@@ -1,0 +1,796 @@
+{
+  "date": "2026-10-22",
+  "baseline": "a5c8c29f6d55876fec069b0d60cccb243c1b37f7",
+  "scope": "OpenClash only; isolated package installation and user-space core execution, not kernel services or traffic",
+  "source_sha256": {
+    "install.sh": "eeb42c3126cc9218fe1dbc6e4b597115f3688e440bf83e047d094bfa9ad576eb",
+    "menu.sh": "20d6209b2d29ece412e4a189ecec3a787f7bc914f4a77313ad23eed830906321"
+  },
+  "current_openclash": "v0.48.002",
+  "assets": [
+    {
+      "name": "luci-app-openclash-0.48.002.apk",
+      "browser_download_url": "https://github.com/vernesong/OpenClash/releases/download/v0.48.002/luci-app-openclash-0.48.002.apk",
+      "digest": "sha256:f7ebbd43f9be15c5e6df26e5d0c03d50d0bb8f7fa4cc0d2c2bf048b08c0b155b"
+    },
+    {
+      "name": "luci-app-openclash_0.48.002_all.ipk",
+      "browser_download_url": "https://github.com/vernesong/OpenClash/releases/download/v0.48.002/luci-app-openclash_0.48.002_all.ipk",
+      "digest": "sha256:f3f0d0514553aea8d542c62dc52ac26d1f79dbda24204280f1cb8ea7fff71e9e"
+    }
+  ],
+  "counts": {
+    "I+C": 61,
+    "I": 13,
+    "B": 3
+  },
+  "environments": [
+    {
+      "firmware": "25.12.5",
+      "arch": "aarch64_cortex-a53",
+      "image": "oc-multiarch:base-25.12.5-aarch64_cortex-a53",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "aarch64_cortex-a72",
+      "image": "oc-multiarch:base-25.12.5-aarch64_cortex-a72",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "aarch64_cortex-a76",
+      "image": "oc-multiarch:base-25.12.5-aarch64_cortex-a76",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "aarch64_generic",
+      "image": "oc-multiarch:base-25.12.5-aarch64_generic",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_arm1176jzf-s_vfp",
+      "image": "oc-multiarch:base-25.12.5-arm_arm1176jzf-s_vfp",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:16 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_arm926ej-s",
+      "image": "oc-multiarch:base-25.12.5-arm_arm926ej-s",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:17 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_cortex-a15_neon-vfpv4",
+      "image": "oc-multiarch:base-25.12.5-arm_cortex-a15_neon-vfpv4",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_cortex-a5_vfpv4",
+      "image": "oc-multiarch:base-25.12.5-arm_cortex-a5_vfpv4",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_cortex-a7",
+      "image": "oc-multiarch:base-25.12.5-arm_cortex-a7",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_cortex-a7_neon-vfpv4",
+      "image": "oc-multiarch:base-25.12.5-arm_cortex-a7_neon-vfpv4",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_cortex-a7_vfpv4",
+      "image": "oc-multiarch:base-25.12.5-arm_cortex-a7_vfpv4",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_cortex-a8_vfpv3",
+      "image": "oc-multiarch:base-25.12.5-arm_cortex-a8_vfpv3",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_cortex-a9",
+      "image": "oc-multiarch:base-25.12.5-arm_cortex-a9",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_cortex-a9_neon",
+      "image": "oc-multiarch:base-25.12.5-arm_cortex-a9_neon",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_cortex-a9_vfpv3-d16",
+      "image": "oc-multiarch:base-25.12.5-arm_cortex-a9_vfpv3-d16",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_fa526",
+      "image": "oc-multiarch:base-25.12.5-arm_fa526",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "luci-app-openclash 0.48.002\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[WARN] 未识别的 CPU 架构，无法自动匹配 Meta 内核"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "arm_xscale",
+      "image": "oc-multiarch:base-25.12.5-arm_xscale",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:17 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "armeb_xscale",
+      "image": "oc-multiarch:base-25.12.5-armeb_xscale",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "luci-app-openclash 0.48.002\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[WARN] 未识别的 CPU 架构，无法自动匹配 Meta 内核"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "i386_pentium-mmx",
+      "image": "oc-multiarch:base-25.12.5-i386_pentium-mmx",
+      "status": "I",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux 386 with go1.26.9 Mon Oct 12 03:44:20 UTC 2026\nUse tags: with_gvisor\n",
+      "host_core_with_sse2": "passed",
+      "minimum_cpu_verified": false,
+      "reason": "Package and core passed on host with SSE2; minimum CPU not validated. QEMU i386 crashed with both pentium3 and max, so do not claim no-SSE2 hardware compatibility."
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "i386_pentium4",
+      "image": "oc-multiarch:base-25.12.5-i386_pentium4",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux 386 with go1.26.9 Mon Oct 12 03:44:20 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "loongarch64_generic",
+      "image": "oc-multiarch:base-25.12.5-loongarch64_generic",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux loong64 with go1.26.9 Mon Oct 12 03:44:16 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "mips64_mips64r2",
+      "image": "oc-multiarch:base-25.12.5-mips64_mips64r2",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux mips64 with go1.26.9 Mon Oct 12 03:44:13 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "mips64_octeonplus",
+      "image": "oc-multiarch:base-25.12.5-mips64_octeonplus",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "luci-app-openclash 0.48.002\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[ERROR] 下载的 Meta 内核不能在当前 CPU/ABI 运行，保留原核心: "
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "mips64el_mips64r2",
+      "image": "oc-multiarch:base-25.12.5-mips64el_mips64r2",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux mips64le with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "mips_24kc",
+      "image": "oc-multiarch:base-25.12.5-mips_24kc",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux mips with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "mips_mips32",
+      "image": "oc-multiarch:base-25.12.5-mips_mips32",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux mips with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "mipsel_24kc",
+      "image": "oc-multiarch:base-25.12.5-mipsel_24kc",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux mipsle with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "mipsel_24kc_24kf",
+      "image": "oc-multiarch:base-25.12.5-mipsel_24kc_24kf",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux mipsle with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "mipsel_74kc",
+      "image": "oc-multiarch:base-25.12.5-mipsel_74kc",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux mipsle with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "mipsel_mips32",
+      "image": "oc-multiarch:base-25.12.5-mipsel_mips32",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux mipsle with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "powerpc64_e5500",
+      "image": "oc-multiarch:base-25.12.5-powerpc64_e5500",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "luci-app-openclash 0.48.002\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[WARN] 未识别的 CPU 架构，无法自动匹配 Meta 内核"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "powerpc_464fp",
+      "image": "oc-multiarch:base-25.12.5-powerpc_464fp",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "luci-app-openclash 0.48.002\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[WARN] 未识别的 CPU 架构，无法自动匹配 Meta 内核"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "powerpc_8548",
+      "image": "oc-multiarch:base-25.12.5-powerpc_8548",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "luci-app-openclash 0.48.002\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[WARN] 未识别的 CPU 架构，无法自动匹配 Meta 内核"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "riscv64_generic",
+      "image": "oc-multiarch:base-25.12.5-riscv64_generic",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux riscv64 with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "25.12.5",
+      "arch": "x86_64",
+      "image": "oc-multiarch:base-25.12.5-x86_64",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux amd64 with go1.26.9 Mon Oct 12 03:44:16 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "aarch64_cortex-a53",
+      "image": "oc-multiarch:base-24.10.8-aarch64_cortex-a53",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792669958\n\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "aarch64_cortex-a72",
+      "image": "oc-multiarch:base-24.10.8-aarch64_cortex-a72",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792669962\n\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "aarch64_cortex-a76",
+      "image": "oc-multiarch:base-24.10.8-aarch64_cortex-a76",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792669963\n\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "aarch64_generic",
+      "image": "oc-multiarch:base-24.10.8-aarch64_generic",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792669966\n\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_arm1176jzf-s_vfp",
+      "image": "oc-multiarch:base-24.10.8-arm_arm1176jzf-s_vfp",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792669962\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:16 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_arm926ej-s",
+      "image": "oc-multiarch:base-24.10.8-arm_arm926ej-s",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792669967\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:17 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_cortex-a15_neon-vfpv4",
+      "image": "oc-multiarch:base-24.10.8-arm_cortex-a15_neon-vfpv4",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792669984\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_cortex-a5_vfpv4",
+      "image": "oc-multiarch:base-24.10.8-arm_cortex-a5_vfpv4",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670003\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_cortex-a7",
+      "image": "oc-multiarch:base-24.10.8-arm_cortex-a7",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670049\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_cortex-a7_neon-vfpv4",
+      "image": "oc-multiarch:base-24.10.8-arm_cortex-a7_neon-vfpv4",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670044\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_cortex-a7_vfpv4",
+      "image": "oc-multiarch:base-24.10.8-arm_cortex-a7_vfpv4",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670050\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_cortex-a8_vfpv3",
+      "image": "oc-multiarch:base-24.10.8-arm_cortex-a8_vfpv3",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670048\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_cortex-a9",
+      "image": "oc-multiarch:base-24.10.8-arm_cortex-a9",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670052\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_cortex-a9_neon",
+      "image": "oc-multiarch:base-24.10.8-arm_cortex-a9_neon",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670053\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_cortex-a9_vfpv3-d16",
+      "image": "oc-multiarch:base-24.10.8-arm_cortex-a9_vfpv3-d16",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670068\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:19 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_fa526",
+      "image": "oc-multiarch:base-24.10.8-arm_fa526",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670086\n\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[WARN] 未识别的 CPU 架构，无法自动匹配 Meta 内核"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "arm_xscale",
+      "image": "oc-multiarch:base-24.10.8-arm_xscale",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670127\n\nMihomo Meta alpha-gbc76c13 linux arm with go1.26.9 Mon Oct 12 03:44:17 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "armeb_xscale",
+      "image": "oc-multiarch:base-24.10.8-armeb_xscale",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670129\n\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[WARN] 未识别的 CPU 架构，无法自动匹配 Meta 内核"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "i386_pentium-mmx",
+      "image": "oc-multiarch:base-24.10.8-i386_pentium-mmx",
+      "status": "I",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670083\n\nMihomo Meta alpha-gbc76c13 linux 386 with go1.26.9 Mon Oct 12 03:44:20 UTC 2026\nUse tags: with_gvisor\n",
+      "host_core_with_sse2": "passed",
+      "minimum_cpu_verified": false,
+      "reason": "Package and core passed on host with SSE2; minimum CPU not validated. QEMU i386 crashed with both pentium3 and max, so do not claim no-SSE2 hardware compatibility."
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "i386_pentium4",
+      "image": "oc-multiarch:base-24.10.8-i386_pentium4",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670084\n\nMihomo Meta alpha-gbc76c13 linux 386 with go1.26.9 Mon Oct 12 03:44:20 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "loongarch64_generic",
+      "image": "oc-multiarch:base-24.10.8-loongarch64_generic",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670121\n\nMihomo Meta alpha-gbc76c13 linux loong64 with go1.26.9 Mon Oct 12 03:44:16 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "mips64_mips64r2",
+      "image": "oc-multiarch:base-24.10.8-mips64_mips64r2",
+      "status": "B",
+      "reason": "No prepared base image; previous emulator/package-manager blocker"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "mips64_octeonplus",
+      "image": "oc-multiarch:base-24.10.8-mips64_octeonplus",
+      "status": "B",
+      "reason": "No prepared base image; previous emulator/package-manager blocker"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "mips64el_mips64r2",
+      "image": "oc-multiarch:base-24.10.8-mips64el_mips64r2",
+      "status": "B",
+      "reason": "No prepared base image; previous emulator/package-manager blocker"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "mips_24kc",
+      "image": "oc-multiarch:base-24.10.8-mips_24kc",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670136\n\nMihomo Meta alpha-gbc76c13 linux mips with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "mips_4kec",
+      "image": "oc-multiarch:base-24.10.8-mips_4kec",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670150\n\nMihomo Meta alpha-gbc76c13 linux mips with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "mips_mips32",
+      "image": "oc-multiarch:base-24.10.8-mips_mips32",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670152\n\nMihomo Meta alpha-gbc76c13 linux mips with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "mipsel_24kc",
+      "image": "oc-multiarch:base-24.10.8-mipsel_24kc",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670152\n\nMihomo Meta alpha-gbc76c13 linux mipsle with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "mipsel_24kc_24kf",
+      "image": "oc-multiarch:base-24.10.8-mipsel_24kc_24kf",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670154\n\nMihomo Meta alpha-gbc76c13 linux mipsle with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "mipsel_74kc",
+      "image": "oc-multiarch:base-24.10.8-mipsel_74kc",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670191\n\nMihomo Meta alpha-gbc76c13 linux mipsle with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "mipsel_mips32",
+      "image": "oc-multiarch:base-24.10.8-mipsel_mips32",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670199\n\nMihomo Meta alpha-gbc76c13 linux mipsle with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "powerpc64_e5500",
+      "image": "oc-multiarch:base-24.10.8-powerpc64_e5500",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670209\n\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[WARN] 未识别的 CPU 架构，无法自动匹配 Meta 内核"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "powerpc_464fp",
+      "image": "oc-multiarch:base-24.10.8-powerpc_464fp",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670220\n\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[WARN] 未识别的 CPU 架构，无法自动匹配 Meta 内核"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "powerpc_8548",
+      "image": "oc-multiarch:base-24.10.8-powerpc_8548",
+      "status": "I",
+      "install_exit": 1,
+      "probe_exit": 127,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670346\n\n/bin/sh: /etc/openclash/core/clash_meta: not found\n",
+      "reason": "[WARN] 未识别的 CPU 架构，无法自动匹配 Meta 内核"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "riscv64_riscv64",
+      "image": "oc-multiarch:base-24.10.8-riscv64_riscv64",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670224\n\nMihomo Meta alpha-gbc76c13 linux riscv64 with go1.26.9 Mon Oct 12 03:44:15 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "24.10.8",
+      "arch": "x86_64",
+      "image": "oc-multiarch:base-24.10.8-x86_64",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "Package: luci-app-openclash\nVersion: 0.48.002\nDepends: libc, dnsmasq-full, bash, curl, ca-bundle, ip-full, ruby, ruby-yaml, kmod-tun, unzip\nStatus: install user installed\nArchitecture: all\nInstalled-Time: 1792670184\n\nMihomo Meta alpha-gbc76c13 linux amd64 with go1.26.9 Mon Oct 12 03:44:16 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "istore-armsr",
+      "arch": "aarch64_generic",
+      "image": "oc-multiarch:base-istore-armsr-aarch64_generic",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "istore-r4s",
+      "arch": "aarch64_generic",
+      "image": "oc-multiarch:base-istore-r4s-aarch64_generic",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "istore-rpi4",
+      "arch": "aarch64_cortex-a72",
+      "image": "oc-multiarch:base-istore-rpi4-aarch64_cortex-a72",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "istore-rpi5",
+      "arch": "aarch64_cortex-a76",
+      "image": "oc-multiarch:base-istore-rpi5-aarch64_cortex-a76",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "istore-seed-ac1",
+      "arch": "aarch64_cortex-a53",
+      "image": "oc-multiarch:base-istore-seed-ac1-aarch64_cortex-a53",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    },
+    {
+      "firmware": "istore-x86",
+      "arch": "x86_64",
+      "image": "oc-multiarch:base-istore-x86",
+      "status": "I+C",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux amd64 with go1.26.9 Mon Oct 12 03:44:16 UTC 2026\nUse tags: with_gvisor\n"
+    }
+  ],
+  "additional_25_12_6": [
+    {
+      "firmware": "25.12.6",
+      "target": "x86/64",
+      "image_url": "https://downloads.openwrt.org/releases/25.12.6/targets/x86/64/openwrt-25.12.6-x86-64-generic-targz-rootfs.tar.gz",
+      "sha256": "d09cb68dd78a7f7b1c4ed788ad42162e07ec094b20f66b382cd4f91c9443970f",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\n==> 当前 Meta 内核版本: Mihomo Meta alpha-gbc76c13 linux amd64 with go1.26.9 Mon Oct 12 03:44:16 UTC 2026",
+      "first_attempt": {
+        "install_exit": 1,
+        "reason": "Dependency download refused; new container image had no test proxy wrapper"
+      },
+      "retry": "latest-x86-64-retry.log"
+    },
+    {
+      "firmware": "25.12.6",
+      "target": "armsr/armv8",
+      "image_url": "https://downloads.openwrt.org/releases/25.12.6/targets/armsr/armv8/openwrt-25.12.6-armsr-armv8-generic-targz-rootfs.tar.gz",
+      "sha256": "b781548d30886845176fee8256e115188029de0c42af252ffc6ea94a62794381",
+      "install_exit": 0,
+      "probe_exit": 0,
+      "probe": "luci-app-openclash 0.48.002\nMihomo Meta alpha-gbc76c13 linux arm64 with go1.26.9 Mon Oct 12 03:44:14 UTC 2026\nUse tags: with_gvisor\n"
+    }
+  ],
+  "upgrades": [
+    {
+      "image": "oc-multiarch:base-25.12.5-aarch64_generic",
+      "container": "oc-update-20261022-upgrade-oc-multiarch-base-25.12.5-aarch64_generic",
+      "exit": 0
+    },
+    {
+      "image": "oc-audit:base-2512",
+      "container": "oc-update-20261022-upgrade-oc-audit-base-2512",
+      "exit": 0
+    },
+    {
+      "image": "oc-audit:base-2410",
+      "container": "oc-update-20261022-upgrade-oc-audit-base-2410",
+      "exit": 0
+    },
+    {
+      "image": "oc-audit:base-istore",
+      "container": "oc-update-20261022-upgrade-oc-audit-base-istore",
+      "exit": 0
+    }
+  ],
+  "offline_tests": {
+    "passed": 20,
+    "shellcheck": "0.11.0",
+    "syntax": [
+      "POSIX sh",
+      "BusyBox ash"
+    ]
+  },
+  "limits": [
+    "Old firmware feed objects replayed from prior verified download cache; current OpenClash metadata and packages fetched this run.",
+    "Direct API failure fallback selects actual 0.48.002 APK/IPK via Release HTML.",
+    "i386 core executed on a host with SSE2, not a Pentium-MMX device; conservative package-only status retained.",
+    "OpenWrt 25.12.6 freshly tested on x86_64 and aarch64_generic only.",
+    "Three 24.10 MIPS64 variants blocked by absent prepared working user-space test image; earlier full-VM results are not new retests.",
+    "User router not accessed or changed."
+  ]
+}

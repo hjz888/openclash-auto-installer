@@ -325,12 +325,20 @@ maybe_update_index_opkg() {
 }
 
 maybe_update_index_apk() {
-    if [ "$FORCE_OPKG_UPDATE" = "1" ]; then
-        log "更新 apk 软件索引"
-        apk update
-    else
+    if [ "$FORCE_OPKG_UPDATE" != "1" ]; then
         log "按参数跳过 apk update"
+        return 0
     fi
+
+    log "更新 apk 软件索引"
+    if apk update; then
+        return 0
+    fi
+
+    warn "apk update 未完全成功，部分软件源可能暂时不可用"
+    warn "将检查已安装依赖并尝试使用现有索引；缺失依赖安装失败时仍会停止"
+    warn "请检查 /etc/apk/repositories 和 /etc/apk/repositories.d/ 中的源及网络访问"
+    return 0
 }
 
 install_dependencies_opkg() {
@@ -359,9 +367,21 @@ install_dependencies_apk() {
         PKGS="bash iptables dnsmasq-full curl ca-bundle ipset ip-full iptables-mod-tproxy iptables-mod-extra kmod-tun kmod-inet-diag unzip jsonfilter"
     fi
 
-    log "安装最小依赖包"
+    MISSING_PKGS=""
+    for DEP_PKG in $PKGS; do
+        if ! apk info -e "$DEP_PKG" >/dev/null 2>&1; then
+            MISSING_PKGS="$MISSING_PKGS $DEP_PKG"
+        fi
+    done
+
+    if [ -z "$MISSING_PKGS" ]; then
+        log "最小依赖均已安装，跳过依赖安装事务"
+        return 0
+    fi
+
+    log "安装缺失依赖:$MISSING_PKGS"
     # shellcheck disable=SC2086
-    apk add $PKGS
+    apk add $MISSING_PKGS || die "安装 OpenClash 依赖失败；请先修复上述软件源/网络错误后重试，未执行插件更新"
 }
 
 fetch_openclash_release_meta() {
@@ -487,6 +507,16 @@ install_openclash_package() {
             die "未知包管理器: $PKG_MGR"
             ;;
     esac
+}
+
+verify_openclash_package() {
+    NEW_VER="$(get_installed_openclash_version "$1" || true)"
+    [ -n "$NEW_VER" ] || die "安装后未查询到 OpenClash 包版本，不能确认安装成功"
+    [ -n "${LATEST_TAG:-}" ] || die "缺少目标发布版本，不能确认更新成功"
+    if [ "$(normalize_version "$NEW_VER")" != "$(normalize_version "$LATEST_TAG")" ]; then
+        die "OpenClash 更新未生效：目标 $LATEST_TAG，实际 $NEW_VER；未继续安装核心"
+    fi
+    log "安装后版本: $NEW_VER（已核验目标 $LATEST_TAG）"
 }
 
 detect_smart_core_enabled() {
@@ -697,12 +727,12 @@ main() {
             need_cmd jsonfilter
             fetch_openclash_release_meta || true
             LATEST_TAG="$(get_latest_tag)"
-            [ -n "$LATEST_TAG" ] && log "OpenClash 最新发布标签: $LATEST_TAG"
+            [ -n "$LATEST_TAG" ] || die "未能获取 OpenClash 目标发布版本"
+            log "OpenClash 最新发布标签: $LATEST_TAG"
             PACKAGE_URL="$(fetch_openclash_package_url "$PKG_MGR")"
             log "安装 / 更新 OpenClash 插件"
             install_openclash_package "$PKG_MGR" "$PACKAGE_URL"
-            NEW_VER="$(get_installed_openclash_version "$PKG_MGR" || true)"
-            log "安装后版本: ${NEW_VER:-unknown}"
+            verify_openclash_package "$PKG_MGR"
             if [ "${OLD_VER:-}" != "${NEW_VER:-}" ]; then
                 PLUGIN_CHANGED="1"
             fi
@@ -715,7 +745,6 @@ main() {
             if [ -z "$CORE_CANDIDATES" ]; then
                 warn "未识别的 CPU 架构，无法自动匹配 Meta 内核"
                 warn "请在 OpenClash 页面中手动下载匹配内核"
-                show_summary
                 exit 1
             fi
 
@@ -728,7 +757,6 @@ main() {
                 CORE_CHANGED="1"
             else
                 warn "自动下载 ${RESOLVED_CORE_CHANNEL} 内核失败，请在 OpenClash 页面手动下载"
-                show_summary
                 exit 1
             fi
             ;;
